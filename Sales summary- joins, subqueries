@@ -1,5 +1,5 @@
 ### Below is the query used to pull the  sales summaries (count of customers, count of films sold and total revenue) from the movie database.
-This was carried out using subqueries and innner joins.
+This was carried out using subqueries and innner joins due to the data existing on different connected tables.
 
 SELECT COUNT(DISTINCT customer_id)as count_of_customers,
 COUNT(DISTINCT film_id) as count_of_films_sold,
