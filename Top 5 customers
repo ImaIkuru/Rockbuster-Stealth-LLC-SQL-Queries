@@ -1,0 +1,16 @@
+This is the query used to pull the first name and last name of the top 5 customers within the top 10 cities in terms of total amount spent by each customer.
+
+SELECT A.customer_id, CONCAT(first_name,' ',last_name) AS customer_name,
+E.country, D.city, SUM(amount) AS total_amount_paid
+FROM payment A
+INNER JOIN customer B ON A.customer_id=B.customer_id
+INNER JOIN address C ON B.address_id=C.address_id
+INNER JOIN city D ON C.city_id=D.city_id
+INNER JOIN country E ON D.country_id=E.country_id
+WHERE city IN ('Aurora','Atlixco','Xintai','Adoni','Dhule (Dhulia)','Kurashiki',
+'Pingxiang','Sivas','Celaya','So Leopoldo')
+AND country IN ('India','China','United States','Japan', 'Mexico', 'Brazil',
+ 'Russian Federation','Philippines','Turkey','Indonesia' )
+GROUP BY A.customer_id,CONCAT(first_name,' ',last_name), E.country, D.city
+ORDER BY SUM(amount) DESC
+LIMIT 5;
