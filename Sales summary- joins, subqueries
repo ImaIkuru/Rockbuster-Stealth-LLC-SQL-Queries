@@ -1,0 +1,11 @@
+### Below is the query used to pull the  sales summaries (count of customers, count of films sold and total revenue) from the movie database.
+This was carried out using subqueries and innner joins.
+
+SELECT COUNT(DISTINCT customer_id)as count_of_customers,
+COUNT(DISTINCT film_id) as count_of_films_sold,
+SUM(amount) as total_revenue
+FROM (SELECT A.customer_id, D.film_id, A.amount
+FROM payment A
+INNER JOIN rental B ON A.rental_id=B.rental_id
+INNER JOIN inventory C ON B.inventory_id=C.inventory_id
+INNER JOIN film D ON C.film_id=D.film_id) AS films_sold;
