@@ -1,4 +1,4 @@
-## Below is the query used to pull a list of the top 10 movies in terms of revenue.
+## Below is the query used to pull a list of the top 10 movies in terms of revenue. The query was executed using joins and groupby.
 
 SELECT D.film_id, D.title, SUM(A.amount) AS total_revenue
 FROM payment A
